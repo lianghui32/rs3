@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="footer fixed-bottom">
       <div class="footer-content">© {{ currentYear }} Lianghui. 保留所有权利.</div>
     </div>
     
@@ -16,6 +16,7 @@
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
+    z-index: -1;
   }
   
   .footer-content {

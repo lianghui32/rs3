@@ -6,22 +6,22 @@ const projects = ref([
         id: 1,
         title: '项目一',
         description: '这是一个关于前端开发的项目，使用了 Vue 和 Bootstrap 5。',
-        image: 'https://via.placeholder.com/300x200.png?text=Project+1',
+        image: '',
         link: 'https://'
     },
     {
         id: 2,
         title: '项目二',
         description: '这是一个关于后端开发的项目，使用了 Node.js 和 Express。',
-        image: 'https://via.placeholder.com/300x200.png?text=Project+2',
+        image: '',
         link: 'https://'
     },
     {
         id: 3,
-        title: '项目三',
+        title: '基于Django的股票预测系统',
         description: '这是一个关于全栈开发的项目，结合了前端和后端技术。',
-        image: 'https://via.placeholder.com/300x200.png?text=Project+3',
-        link: 'https://'
+        image: '',
+        link: 'http://116.198.228.5/stock/'
     }
 ]);
 </script>
@@ -78,7 +78,7 @@ const projects = ref([
             <h2 class="text-center mb-4">精选作品集</h2>
             <div class="col-md-4" v-for="item in projects" :key="item.id">
                 <div class="card shadow-sm mb-4">
-                    <img :src="item.image" class="card-img-top" :alt="item.title" />
+                    <!-- <img :src="item.image" class="card-img-top" :alt="item.title" /> -->
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.description }}</p>
