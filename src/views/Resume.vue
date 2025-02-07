@@ -19,14 +19,14 @@
 import printJS from 'print-js';
 import { ref } from 'vue';
 
-const url = ref('http://116.198.228.5/resume.html');
+const url = ref('//116.198.228.5/resume.html');
 const showIframe = ref(true);
 function openCertificate() {
   showIframe.value = !showIframe.value;
   if (showIframe.value) {
-    url.value = 'http://116.198.228.5/resume.html';
+    url.value = '//116.198.228.5/resume.html';
   } else {
-    url.value = 'http://116.198.228.5/pdf.html';
+    url.value = '//116.198.228.5/pdf.html';
   }
 }
 
