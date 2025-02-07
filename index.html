@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>梁慧</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #edeef3, #8ec5fc);
+      background-size: 200% 200%;
+      animation: gradientAnimation 5s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* 针对小屏幕设备的样式 */
+    @media (max-width: 768px) {
+      body {
+        background-size: 300% 300%;
+        /* 增加背景大小以适应小屏幕 */
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        background-size: 400% 400%;
+        /* 进一步增加背景大小以适应更小的屏幕 */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
