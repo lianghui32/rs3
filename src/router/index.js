@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-// import Resume from '../views/Resume.vue';
+import About from '../views/About.vue';
 import Test from '../views/Test.vue';
 import Aiweb from '../views/Aiweb.vue';
 import Skills from '@/components/Skills.vue';
@@ -12,8 +12,8 @@ const routes = [
   },
   {
     path: '/resume',
-    name: 'Resume',
-    // component: Resume,
+    name: 'About',
+    component: About,
   },
   {
     path: '/ai',
@@ -42,13 +42,13 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.name === 'Resume') {
-    window.open ('http://116.198.228.5/', '_blank');
-  }
-  else {
-    next()
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.name === 'Resume') {
+//     window.open ('http://116.198.228.5/', '_blank');
+//   }
+//   else {
+//     next()
+//   }
+// });
 
   export default router;
