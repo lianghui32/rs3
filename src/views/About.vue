@@ -10,7 +10,7 @@ const isprint = ref(true);
 <template>
     <div id="resume">
         <div class="button-container">
-            <button class="btn-print" v-print="isprint ? '#resume-container' : null" v-show="isprint">打印简历</button>
+            <button class="btn-print" v-print="isprint ? '#resume-container' : null" v-show="isprint">电脑打印</button>
             <button class="btn-print" style="background-color:brown;" @click="isprint = !isprint">{{ isprint ? '学历认证' :
                 '查看简历' }}</button>
         </div>
