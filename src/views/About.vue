@@ -5,19 +5,44 @@ import Resume from './Resume.vue';
 import Xueli from './Xueli.vue';
 
 const isprint = ref(true);
+
+// import html2pdf from 'html2pdf.js';
+
+// const downloadPdf = () => {
+//   const element = document.getElementById('resume-container');
+//   const options = {
+//     margin: 0,
+//     filename: '梁慧_运维开发_广科大_2024.pdf',
+//     image: { type: 'jpeg', quality: 0.98 },
+//     html2canvas: {
+//       scale: 2, onclone: (clonedDoc) => {
+//         // 在克隆的文档中处理超链接
+//         const links = clonedDoc.querySelectorAll('a[data-href]');
+//         links.forEach((link) => {
+//           link.textContent = link.getAttribute('data-href'); // 显示链接地址
+//         });
+//       }
+//     },
+//     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+//   };
+
+//   html2pdf().from(element).set(options).save();
+
+// };
 </script>
 
 <template>
-    <div id="resume">
-        <div class="button-container">
-            <button class="btn-print" v-print="isprint ? '#resume-container' : null" v-show="isprint">电脑打印</button>
-            <button class="btn-print" style="background-color:brown;" @click="isprint = !isprint">{{ isprint ? '学历认证' :
-                '查看简历' }}</button>
-        </div>
-        <Resume v-show="isprint"></Resume>
+  <div id="resume">
+    <div class="button-container">
+      <!-- <button class="btn-print" style="background-color: gray;" @click="downloadPdf" v-show="isprint">下载 PDF</button> -->
+      <button class="btn-print" v-print="isprint ? '#resume-container' : null" v-show="isprint">电脑打印</button>
+      <button class="btn-print" style="background-color:brown;" @click="isprint = !isprint">{{ isprint ? '学历认证' :
+        '查看简历' }}</button>
     </div>
+    <Resume v-show="isprint"></Resume>
+  </div>
 
-    <Xueli v-show="!isprint"></Xueli>
+  <Xueli v-show="!isprint"></Xueli>
 </template>
 
 <style scoped>
@@ -43,7 +68,7 @@ const isprint = ref(true);
 .btn-print {
   background-color: #215bc7;
   color: white;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   text-align: center;
   margin-right: 10px;
 }

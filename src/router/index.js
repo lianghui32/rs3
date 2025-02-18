@@ -14,7 +14,11 @@ const routes = [
     path: '/resume',
     name: 'About',
     component: About,
+  },{
+    path: '/blog',
+    name: 'Blog',
   },
+
   {
     path: '/ai',
     name: 'Ai',
@@ -42,13 +46,13 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.name === 'Resume') {
-//     window.open ('http://116.198.228.5/', '_blank');
-//   }
-//   else {
-//     next()
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.name === 'Blog') {
+    window.open('https://blog.csdn.net/qq_52313022', '_blank');
+  }
+  else {
+    next()
+  }
+});
 
-  export default router;
+export default router;

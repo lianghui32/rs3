@@ -151,9 +151,9 @@ const projects = ref([
       <h3>项目经历</h3>
       <div v-for="(project, index) in projects" :key="index">
         <div style="display: inline;">
-          <h4 style="padding-top: 10px;">
+          <span style="padding-top: 10px;">
             <a :href="project.href" target="_blank">{{ index + 1 }}、{{ project.title }}</a>
-          </h4>
+          </span>
           <a v-if="project.href" :href="project.href" target="_blank" style="float: right;">{{ project.href }}</a>
         </div>
 

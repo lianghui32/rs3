@@ -6,13 +6,12 @@ import Footer from './layout/Footer.vue';
 
 </script>
 <template>
-  <div id="app">
+  <div style="display: flex; flex-direction: column; min-height: 100vh;">
     <Navbar />
-
-    <router-view />
-    <Site />
-    
+    <div style="flex: 1;">
+      <RouterView />
+      <Site />
+    </div>
+    <Footer />
   </div>
-  <Footer />
 </template>
-
