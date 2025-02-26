@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import printJS from 'print-js';
+
 
 
 import imageSrc from '@/assets/img/bytx.jpg';
