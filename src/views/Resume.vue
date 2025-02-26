@@ -39,6 +39,20 @@ const internshipCompany = ref('广州尚观信息科技有限公司');
 
 const projects = ref([
   {
+    title: 'WordPress 博客、商城网站部署与运维',
+    href: 'http://116.198.228.5:8088',
+    overview: '负责从零搭建并维护一个基于 Nginx、MySQL 和 PHP 的 WordPress 网站，确保其在高流量下的稳定运行和数据安全。具有容器化部署、单机部署、多主机分离式部署经验。',
+    techStack: [
+      '数据库：MySQL，代理：Nginx，后端：PHP,应用：WordPress,容器化：Docker',
+    ],
+    mainTasks: [
+      '环境搭建：成功部署并了 Nginx、MySQL 和 PHP 的 LNMP 堆栈，确保网站的可用性。',
+      '性能优化：成功通过调整 Nginx 配置及插件配置，将页面加载时间减少了 50%。',
+      '安全性增强：实施了防火墙规则、SSL 证书部署和定期的安全扫描，有效提升了网站的安全性。',
+      '多主机部署：通过分布式架构（如多主机分离式部署），实现了负载均衡和高可用性',
+    ],
+  },
+  {
     title: '基于 Django 的股票预测系统开发与部署',
     href: 'http://116.198.228.5/stock/',
     overview: '负责开发并部署一个基于 Django 框架的股票预测系统，该系统能够提供用户账户管理、数据获取与预处理、股票价格预测以及实时行情展示等功能。',
@@ -58,6 +72,7 @@ const projects = ref([
       '系统部署：利用 Docker 实现系统的容器化部署，提高系统的可移植性和稳定性。',
     ],
   },
+
   {
     title: 'MySQL 数据库备份与恢复',
     href: '',
@@ -75,7 +90,7 @@ const projects = ref([
   },
   {
     title: 'Docker 容器化部署 Prometheus+Grafana+node-exporter 监控系统',
-    href: 'http://116.198.228.5:3000',
+    href: '',
     overview: '设计并部署了一个基于 Docker 的监控系统，整合 Prometheus、node-exporter 和 Grafana，实现对本地及远程云主机的性能监控和数据可视化。',
     techStack: [
       '容器化：Docker',
@@ -97,80 +112,82 @@ const projects = ref([
 
 <template>
 
-    <div class="resume-container" id="resume-container" v-show="isprint">
-      <h1>{{ name }}</h1>
+  <div class="resume-container" id="resume-container" v-show="isprint">
+    <h1>{{ name }}</h1>
 
-      <div class="info-container">
-        <table class="info-table">
-          <tr>
-            <td><strong>性别：</strong> {{ gender }}</td>
-            <td><strong>出生日期：</strong> {{ birthDate }}</td>
-          </tr>
-          <tr>
-            <td><strong>学历：</strong> {{ education }}</td>
-            <td><strong>联系微信：</strong> {{ wechat }}</td>
-          </tr>
-          <tr>
-            <td><strong>籍贯：</strong> {{ birthDate }}</td>
-            <td><strong>电子邮箱：</strong> <a :href="emailHref" style="text-decoration: none;">{{ email }}</a></td>
-          </tr>
-        </table>
-
-        <div class="image-container">
-          <img :src="imageSrc" alt="个人照片" />
-          <img :src="qrCodeSrc" alt="二维码" />
-        </div>
-      </div>
-      <h3>教育经历</h3>
-      <table>
+    <div class="info-container">
+      <table class="info-table">
         <tr>
-          <td>{{ educationPeriod }}</td>
-          <td>{{ university }}</td>
-          <td>{{ major }}</td>
-          <td>{{ degree }}</td>
+          <td><strong>性别：</strong> {{ gender }}</td>
+          <td><strong>出生日期：</strong> {{ birthDate }}</td>
         </tr>
         <tr>
-          <td colspan="2">GPA: {{ gpa }}/10.0</td>
-          <td colspan="4"><a :href="verificationLink" target="_blank">www.lianghui.vip认证</a></td>
+          <td><strong>学历：</strong> {{ education }}</td>
+          <td><strong>联系微信：</strong> {{ wechat }}</td>
+        </tr>
+        <tr>
+          <td><strong>籍贯：</strong> {{ birthDate }}</td>
+          <td><strong>电子邮箱：</strong> <a :href="emailHref" style="text-decoration: none;">{{ email }}</a></td>
         </tr>
       </table>
 
-      <h3>专业技能</h3>
-      <ol>
-        <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
-      </ol>
-
-      <h3>实训经历</h3>
-      <table>
-        <tr>
-          <td>{{ internshipPeriod }}</td>
-          <td>{{ internshipCompany }}</td>
-        </tr>
-      </table>
-
-      <h3>项目经历</h3>
-      <div v-for="(project, index) in projects" :key="index">
-        <div style="display: inline;">
-          <span style="padding-top: 10px;">
-            <a :href="project.href" target="_blank">{{ index + 1 }}、{{ project.title }}</a>
-          </span>
-          <a v-if="project.href" :href="project.href" target="_blank" style="float: right;">{{ project.href }}</a>
-        </div>
-
-        <h5>项目概述：</h5>
-        <p>{{ project.overview }}</p>
-
-        <h5>技术栈：</h5>
-        <ol>
-          <li v-for="(tech, techIndex) in project.techStack" :key="techIndex">{{ tech }}</li>
-        </ol>
-
-        <h5>主要工作：</h5>
-        <ol>
-          <li v-for="(task, taskIndex) in project.mainTasks" :key="taskIndex">{{ task }}</li>
-        </ol>
+      <div class="image-container">
+        <img :src="imageSrc" alt="个人照片" />
+        <img :src="qrCodeSrc" alt="二维码" />
       </div>
     </div>
+    <h3>教育经历</h3>
+    <table>
+      <tr>
+        <td>{{ educationPeriod }}</td>
+        <td>{{ university }}</td>
+        <td>{{ major }}</td>
+        <td>{{ degree }}</td>
+      </tr>
+      <tr>
+        <td colspan="2">GPA: {{ gpa }}/10.0</td>
+        <td colspan="4"><a :href="verificationLink" target="_blank">www.lianghui.vip认证</a></td>
+      </tr>
+    </table>
+
+    <h3>专业技能</h3>
+    <ol>
+      <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
+    </ol>
+
+    <h3>实训经历</h3>
+    <table>
+      <tr>
+        <td>{{ internshipPeriod }}</td>
+        <td>{{ internshipCompany }}</td>
+      </tr>
+    </table>
+
+    <h3>项目经历</h3>
+    <div v-for="(project, index) in projects" :key="index" style="display: inline;padding-top: 10px">
+      <div >
+        <span>
+          <a :href="project.href" target="_blank">{{ index + 1 }}、{{ project.title }}</a>
+        </span>
+        <a v-if="project.href" :href="project.href" target="_blank" style="float: right;">{{ project.href }}</a>
+      </div>
+
+      <div style="padding-left: 25px;">
+        <h5>项目概述：</h5>
+      <p>{{ project.overview }}</p>
+
+      <h5>技术栈：</h5>
+      <ol>
+        <li v-for="(tech, techIndex) in project.techStack" :key="techIndex">{{ tech }}</li>
+      </ol>
+
+      <h5>主要工作：</h5>
+      <ol>
+        <li v-for="(task, taskIndex) in project.mainTasks" :key="taskIndex">{{ task }}</li>
+      </ol>
+      </div>
+    </div>
+  </div>
 
 </template>
 
