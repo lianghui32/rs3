@@ -12,14 +12,14 @@ const projects = ref([
     {
         id: 2,
         title: '项目二',
-        description: '这是一个关于后端开发的项目，使用了 Node.js 和 Express。',
+        description: '这是一个基于WordPress的网站部署与运维项目。',
         image: '',
-        link: 'https://'
+        link: 'http://116.198.228.5:8088'
     },
     {
         id: 3,
         title: '基于Django的股票预测系统',
-        description: '这是一个关于全栈开发的项目，结合了前端和后端技术。',
+        description: '这是一个关于Python全栈开发的项目，结合了前端和后端技术。',
         image: '',
         link: 'http://116.198.228.5/stock/'
     }
