@@ -6,35 +6,53 @@ import Xueli from './Xueli.vue';
 
 const isprint = ref(true);
 
-// import html2pdf from 'html2pdf.js';
+import axios from 'axios';
 
-// const downloadPdf = () => {
-//   const element = document.getElementById('resume-container');
-//   const options = {
-//     margin: 0,
-//     filename: '梁慧_运维开发_广科大_2024.pdf',
-//     image: { type: 'jpeg', quality: 0.98 },
-//     html2canvas: {
-//       scale: 2, onclone: (clonedDoc) => {
-//         // 在克隆的文档中处理超链接
-//         const links = clonedDoc.querySelectorAll('a[data-href]');
-//         links.forEach((link) => {
-//           link.textContent = link.getAttribute('data-href'); // 显示链接地址
-//         });
-//       }
-//     },
-//     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-//   };
+// 定义加载状态
+const isLoading = ref(false);
 
-//   html2pdf().from(element).set(options).save();
+// 下载 PDF 的方法
+const downloadPdf = async () => {
+  try {
+    // 开始加载
+    isLoading.value = true;
 
-// };
+    const response = await axios({
+      url: 'https://pythonhui.pythonanywhere.com/rs-pdf', // 后端地址
+      method: 'GET',
+      responseType: 'blob' // 以二进制流接收响应
+    });
+
+    // 创建下载链接并触发下载
+    const blob = new Blob([response.data], { type: 'application/pdf' });
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = '梁慧_运维开发_广科大_2024.pdf';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  } catch (error) {
+    console.error('下载失败:', error);
+    alert('下载失败，请稍后再试！');
+  } finally {
+    // 结束加载
+    isLoading.value = false;
+  }
+};
 </script>
 
 <template>
   <div id="resume">
     <div class="button-container">
-      <!-- <button class="btn-print" style="background-color: gray;" @click="downloadPdf" v-show="isprint">下载 PDF</button> -->
+      <!-- 下载按钮 -->
+      <button class="btn-print" :disabled="isLoading" @click="downloadPdf">
+        <span v-if="!isLoading">下载 PDF</span>
+        <span v-else class="loading-dots">加载中<dot></dot>
+          <dot></dot>
+          <dot></dot>
+        </span>
+      </button>
       <button class="btn-print" v-print="isprint ? '#resume-container' : null" v-show="isprint">电脑打印</button>
       <button class="btn-print" style="background-color:brown;" @click="isprint = !isprint">{{ isprint ? '学历认证' :
         '查看简历' }}</button>
@@ -94,6 +112,42 @@ const isprint = ref(true);
   height: 80px;
   width: auto;
   margin-left: 10px;
+}
+
+/* 加载动画样式 */
+.loading-dots {
+  font-size: 16px;
+  position: relative;
+}
+
+.loading-dots dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 2px;
+  background-color: white;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+.loading-dots dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loading-dots dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 375px) {
