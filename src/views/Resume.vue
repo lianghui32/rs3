@@ -9,8 +9,9 @@ import qrCodeSrc from '@/assets/img/qrcode.png';
 const name = ref('梁慧');
 const gender = ref('男');
 const birthDate = ref('2001年04月25日');
+const origin = ref('广西田东');
 const education = ref('本科');
-const wechat = ref('TD_lianghui');
+const wechat = ref('18154759159');
 const email = ref('hui@lianghui.vip');
 const emailHref = ref('mailto:hui@lianghui.vip');
 
@@ -19,7 +20,7 @@ const university = ref('广西科技大学');
 const major = ref('数据科学与大数据技术');
 const degree = ref('本科');
 const gpa = ref('7.41');
-const verificationLink = ref('https://www.lianghui.vip/');
+const verificationLink = ref('https://www.lianghui.vip/resume');
 
 
 
@@ -88,23 +89,23 @@ const projects = ref([
       '备份验证与测试：定期进行备份数据的完整性验证和恢复测试，确保备份方案的可靠性和有效性。',
     ],
   },
-  // {
-  //   title: 'Docker 容器化部署 Prometheus+Grafana+node-exporter 监控系统',
-  //   href: '',
-  //   overview: '设计并部署了一个基于 Docker 的监控系统，整合 Prometheus、node-exporter 和 Grafana，实现对本地及远程云主机的性能监控和数据可视化。',
-  //   techStack: [
-  //     '容器化：Docker',
-  //     '监控工具：Prometheus, Grafana, node-exporter',
-  //   ],
-  //   mainTasks: [
-  //     'Docker 网络配置：配置 Docker 网络，确保服务间的无缝通信。',
-  //     'Prometheus 配置：自定义 Prometheus 配置文件，实现自动发现并监控节点指标。',
-  //     '系统级指标收集：部署并配置 node-exporter，收集关键系统级性能指标。',
-  //     '数据可视化：在 Grafana 中设置数据源，创建定制仪表板展示关键性能指标。',
-  //     '警报规则配置：配置 Prometheus 警报规则，并集成 Grafana 通知机制，实现实时监控告警。',
-  //     '权限管理：管理组织和用户权限，确保监控数据的安全访问。',
-  //   ],
-  // },
+  {
+    title: 'Docker 容器化部署 Prometheus+Grafana+node-exporter 监控系统',
+    href: '',
+    overview: '设计并部署了一个基于 Docker 的监控系统，整合 Prometheus、node-exporter 和 Grafana，实现对本地及远程云主机的性能监控和数据可视化。',
+    techStack: [
+      '容器化：Docker',
+      '监控工具：Prometheus, Grafana, node-exporter',
+    ],
+    mainTasks: [
+      'Docker 网络配置：配置 Docker 网络，确保服务间的无缝通信。',
+      'Prometheus 配置：自定义 Prometheus 配置文件，实现自动发现并监控节点指标。',
+      '系统级指标收集：部署并配置 node-exporter，收集关键系统级性能指标。',
+      '数据可视化：在 Grafana 中设置数据源，创建定制仪表板展示关键性能指标。',
+      '警报规则配置：配置 Prometheus 警报规则，并集成 Grafana 通知机制，实现实时监控告警。',
+      '权限管理：管理组织和用户权限，确保监控数据的安全访问。',
+    ],
+  },
 ]);
 
 
@@ -126,7 +127,7 @@ const projects = ref([
           <td><strong>联系微信：</strong> {{ wechat }}</td>
         </tr>
         <tr>
-          <td><strong>籍贯：</strong> {{ birthDate }}</td>
+          <td><strong>籍贯：</strong> {{ origin }}</td>
           <td><strong>电子邮箱：</strong> <a :href="emailHref" style="text-decoration: none;">{{ email }}</a></td>
         </tr>
       </table>
@@ -136,6 +137,7 @@ const projects = ref([
         <img :src="qrCodeSrc" alt="二维码" />
       </div>
     </div>
+
     <h3>教育经历</h3>
     <table>
       <tr>
@@ -150,11 +152,6 @@ const projects = ref([
       </tr>
     </table>
 
-    <h3>专业技能</h3>
-    <ol>
-      <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
-    </ol>
-
     <h3>实训经历</h3>
     <table>
       <tr>
@@ -162,6 +159,11 @@ const projects = ref([
         <td>{{ internshipCompany }}</td>
       </tr>
     </table>
+
+    <h3>专业技能</h3>
+    <ol>
+      <li v-for="(skill, index) in skills" :key="index">{{ skill }}</li>
+    </ol>
 
     <h3>项目经历</h3>
     <div v-for="(project, index) in projects" :key="index">
@@ -173,7 +175,7 @@ const projects = ref([
           <a v-if="project.href" :href="project.href" target="_blank" style="float: right;">{{ project.href }}</a>
         </div>
 
-        <div style="padding-left: 25px;">
+        <div style="padding-left: 15px;">
           <h5>项目概述：</h5>
           <p>{{ project.overview }}</p>
 
@@ -299,6 +301,7 @@ table {
 td {
   padding: 2px;
   vertical-align: top;
+  text-align: left;
 }
 
 h1,
